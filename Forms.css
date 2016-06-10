@@ -1,0 +1,15 @@
+﻿.input
+{
+    width:100px;
+    text-align:right;
+}
+
+.calculated
+{
+    width:100px;
+    background-color:#B4FFA5;
+    border:none;
+    font-weight:bold;
+    padding:4px;
+    text-align:right;
+}

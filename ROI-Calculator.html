@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Objectif Lune - PlanetPress Partners</title>
+    <link rel="Shortcut Icon" href="images/-favicon.ico" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="Forms.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body onload="reCalc();">
+    <div id="wrapper">
+        <div id="header"><img src="images/OL-Black-Banner800.png" width="800" height="40" alt="" /></div>
+        <div id="menu">
+<ul>
+			<li><a href="home.html">HOME</a></li>
+			<li></li>
+			
+			<li></li>
+			<li></li>	
+                	  <li><a href="business.html"> BUSINESS</a></li>
+                                  <li><a href="#">PRODUCTS</a>
+			<ul>
+				<li><a href="products-connect.html">CONNECT</a></li>
+                <li><a href="products-classic.html">CLASSIC</a></li>
+				<li><a href="products-cbn.html">EDI / CAPTURE</a></li>
+			<li><a href="products-mobile.html">MOBILE</a></li>
+			
+			</ul>
+			</li>
+             
+                      <li><a href="#"> MARKETING </a>
+                      <ul>
+				<li><a href="marketing-connect.html">CONNECT</a></li>
+                <li><a href="marketing-classic.html">CLASSIC</a></li>
+				<li><a href="marketing-CBN.html">EDI / CAPTURE</a></li>
+			<li><a href="marketing-mobile.html">MOBILE</a></li>
+            	<li><a href="marketing-applications.html">APPLICATIONS</a></li>
+			</ul>
+			</li>	
+                        <li><a href="videos.html">VIDEOS </a></li>
+                        <li><a href="presentations.html">PRESENTATIONS </a></li>
+                      <li><a href="training.html"> TRAINING </a></li>				
+	</ul>
+</div>
+        <img src="images/OL-Partner-Banner-Header-2015.gif" alt="" width="800" height="241" />
+        <div id="content">
+            <div id="left">
+                <div class="post">
+                    <h5>CAPTURE ON-THE-GO ROI SAVINGS CALCULATOR</h5>
+                    <h4>Business statistics</h4>
+                    <script language="javascript">
+                        function toggleNeeded(checkbox, inputFieldName)
+                        {
+                            var inputField = document.getElementById(inputFieldName);
+                            if (checkbox.checked)
+                            {
+                                inputField.value = 0;
+                                inputField.disabled = true;
+                            }
+                            else
+                            {
+                                inputField.disabled = false;
+                            }
+                            reCalc();
+                        }
+
+                  function reCalc()
+                  {
+                      var nWorkingHours = 2087;
+                      var nHourlyRate = 0; //calculated later
+                      var nInterestRate = .0325;
+                      var nThreeYearLeaseRate = .033;
+                      var nNumberOfDeliveries = 0; //calculated later
+                      var nPPConnect = 0; //calculated later
+                      var nPSCost = 100000;
+                      var nCare = 0; //calculated later
+                      var nCOTGLicense = 0; //calculated later
+                      var nTotalCost = 0; //calculated later
+                      var nLeaseMonthlyCost = 0; //calculated later
+                      var nTotalSaving = 0; //calculated later
+                      var nMonthlySaving = 0; //calculated later
+                      var nLeaseISPcost = 0; //calculated later
+
+                      var nReducedPrintingService = 0; //calculated later
+                      var nReducedScanService = 0; //calculated later
+                      var nReducedKeyDeliveryNote = 0; //calculated later
+                      var nReducedManageMisplacedDelivery = 0; //calculated later
+                      var nReducedManageDirtyDelivery = 0; //calculated later
+                      var nReducedMatchPODInvoiceManually = 0; //calculated later
+                      var nReductionDSOSaved = 0; //calculated later
+                      var nNonPaymentLostPOD = 0; //calculated later
+
+
+                      var deliveryAvgVal = document.getElementById("deliveryAvgVal");
+                      var yearlyAdminSalary = document.getElementById("yearlyAdminSalary");
+                      var numberOfDrivers = document.getElementById("numberOfDrivers");
+                      var avgDeliveriesPerDay = document.getElementById("avgDeliveriesPerDay");
+                      var calcBusinessSize = document.getElementById("calcBusinessSize");
+                      var printingService = document.getElementById("printingService");
+                      var calcReducedPrintingService = document.getElementById("calcReducedPrintingService");
+                      var scanService = document.getElementById("scanService");
+                      var calcReducedScanService = document.getElementById("calcReducedScanService");
+                      var keyDeliveryNote = document.getElementById("keyDeliveryNote");
+                      var calcReducedKeyDeliveryNote = document.getElementById("calcReducedKeyDeliveryNote");
+                      var manageMisplacedDelivery = document.getElementById("manageMisplacedDelivery");
+                      var calcReducedManageMisplacedDelivery = document.getElementById("calcReducedManageMisplacedDelivery");
+                      var misplacedDeliveryNotes = document.getElementById("misplacedDeliveryNotes");
+                      var calcReducedMisplacedDeliveryNotes = document.getElementById("calcReducedMisplacedDeliveryNotes");
+                      var dirtyVsClean = document.getElementById("dirtyVsClean");
+                      var calcReducedDirtyVsClean = document.getElementById("calcReducedDirtyVsClean");
+                      var manageDirtyDelivery = document.getElementById("manageDirtyDelivery");
+                      var calcReducedManageDirtyDelivery = document.getElementById("calcReducedManageDirtyDelivery");
+                      var matchPODInvoiceManually = document.getElementById("matchPODInvoiceManually");
+                      var calcReducedMatchPODInvoiceManually = document.getElementById("calcReducedMatchPODInvoiceManually");
+                      var reductionDSOSaved = document.getElementById("reductionDSOSaved");
+                      var calcReductionDSOSaved = document.getElementById("calcReductionDSOSaved");
+                      var numberOfPODsLostDaily = document.getElementById("numberOfPODsLostDaily");
+                      var calcPODsLostDaily = document.getElementById("calcPODsLostDaily");
+                      var nonPaymentLostPOD = document.getElementById("nonPaymentLostPOD");
+                      var calcNonPaymentLostPOD = document.getElementById("calcNonPaymentLostPOD");
+                      var ppConnect = document.getElementById("ppConnect");
+                      var numberOfTablets = document.getElementById("numberOfTablets");
+                      var internetService = document.getElementById("internetService");
+                      var calcLeaseMonthlyCost = document.getElementById("calcLeaseMonthlyCost");
+                      var calcLeaseMonthlySavings = document.getElementById("calcLeaseMonthlySavings");
+                      var calcROIinMonths = document.getElementById("calcROIinMonths");
+                      var calcDailySavings = document.getElementById("calcDailySavings");
+                      var calcMonthlySavings = document.getElementById("calcMonthlySavings");
+                      var calcYearlySavings = document.getElementById("calcYearlySavings");
+
+                      calcBusinessSize.value = formatCurrency(deliveryAvgVal.value * numberOfDrivers.value * avgDeliveriesPerDay.value * 20 * 12);
+                      nHourlyRate = yearlyAdminSalary.value / nWorkingHours;
+                      nNumberOfDeliveries = numberOfDrivers.value * avgDeliveriesPerDay.value;
+
+                      nReducedPrintingService = nNumberOfDeliveries * printingService.value;
+                      nReducedScanService = scanService.value / 20;
+                      nReducedKeyDeliveryNote = nNumberOfDeliveries * keyDeliveryNote.value / 60 * nHourlyRate;
+                      nReducedManageMisplacedDelivery = nNumberOfDeliveries * manageMisplacedDelivery.value / 60 * nHourlyRate * (misplacedDeliveryNotes.value/100);
+                      nReducedManageDirtyDelivery = nNumberOfDeliveries * (dirtyVsClean.value/100) * manageDirtyDelivery.value / 60 * nHourlyRate;
+                      nReducedMatchPODInvoiceManually = nNumberOfDeliveries * matchPODInvoiceManually.value / 60 * nHourlyRate;
+                      nReductionDSOSaved = deliveryAvgVal.value * nNumberOfDeliveries * nInterestRate / 365 * reductionDSOSaved.value;
+                      nNonPaymentLostPOD = nNumberOfDeliveries * (numberOfPODsLostDaily.value/100) * deliveryAvgVal.value * (nonPaymentLostPOD.value/100);
+
+                      calcReducedPrintingService.value = formatCurrency(nReducedPrintingService);
+                      calcReducedScanService.value = formatCurrency(nReducedScanService);
+                      calcReducedKeyDeliveryNote.value = formatCurrency(nReducedKeyDeliveryNote);
+                      calcReducedManageMisplacedDelivery.value = formatCurrency(nReducedManageMisplacedDelivery);
+                      //calcReducedMisplacedDeliveryNotes.value = 0;
+                      //calcReducedDirtyVsClean.value = 0;
+                      calcReducedManageDirtyDelivery.value = formatCurrency(nReducedManageDirtyDelivery);
+                      calcReducedMatchPODInvoiceManually.value = formatCurrency(nReducedMatchPODInvoiceManually);
+                      calcReductionDSOSaved.value = formatCurrency(nReductionDSOSaved);
+                      //calcPODsLostDaily.value = 0;
+                      calcNonPaymentLostPOD.value = formatCurrency(nNonPaymentLostPOD);
+
+                      nPPConnect = ppConnect.value * 10850;
+                      nCare = nPPConnect * .2;
+                      nCOTGLicense = numberOfDrivers.value * 300;
+                      nTotalCost = nPPConnect + nPSCost + (numberOfDrivers.value * numberOfTablets.value) + (numberOfDrivers.value * internetService.value * 12);
+                      nTotalSaving = nReducedPrintingService + nReducedScanService + nReducedKeyDeliveryNote + nReducedManageMisplacedDelivery + nReducedManageDirtyDelivery + nReducedMatchPODInvoiceManually + nReductionDSOSaved + nNonPaymentLostPOD;
+                      nMonthlySaving = nTotalSaving * 20;
+
+                      calcDailySavings.innerHTML = formatCurrency(nTotalSaving);
+                      calcMonthlySavings.innerHTML = formatCurrency(nMonthlySaving);
+                      calcYearlySavings.innerHTML = formatCurrency(nMonthlySaving * 12);
+
+                      nLeaseMonthlyCost = ((nCare + nCOTGLicense) * 3 + nPPConnect + nPSCost + (numberOfDrivers.value * numberOfTablets.value)) * nThreeYearLeaseRate;
+                      calcLeaseMonthlyCost.innerHTML = formatCurrency(nLeaseMonthlyCost);
+                      nLeaseISPcost = internetService.value * numberOfDrivers.value;
+
+                      calcLeaseMonthlySavings.innerHTML = formatCurrency(nMonthlySaving - nLeaseMonthlyCost - nLeaseISPcost);
+                      calcROIinMonths.innerHTML = (nTotalCost / (nMonthlySaving * 12) * 365 / 30).toFixed(0);
+                  }
+
+
+                  function formatCurrency(number)
+                  {
+                      var n = number,
+                        c = 0,
+                        d = ".",
+                        t = ",",
+                        s = n < 0 ? "-" : "",
+                        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+                        j = (j = i.length) > 3 ? j % 3 : 0;
+                        return s + "$" + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+                
