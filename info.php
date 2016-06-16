@@ -14,19 +14,7 @@
     <div id="assessment-wrapper">
       <div class="assessment-inner">
         
-        <div id="header">  
-          <div class="title-wrapper">
-            <div class="main-title"><h1>Calculate Your ROI</h1></div>
-          </div>
-          
-          <div class="pager-wrapper">
-            <div class="pager container">
-              <div class="inner">
-                <span class="one active">1</span><span class="two">2</span><span class="three">3</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        
           
         <div id="section-one" class="section">
           <div class="section-inner container">
@@ -35,9 +23,7 @@
             <div class="row">
               <div class="col s12 m6 section-text">
                 <div class="inner">
-                  <p>Congratulations on taking the first step toward a better web presence. These questions are designed to help you take an honest look at 15 pieces of the web strategy puzzle.</p> 
-                  <div class='assessment-image-wrapper image-start center-align'><div class='the-image'></div></div>
-                  <p>Once you discover how you're doing, you'll have the opportunity to get some (FREE!) help from our experts.</p> <p>Get started by filling out the form here.</p>
+                  <p>Some content here.</p> 
                 </div>
               </div>
               
@@ -59,47 +45,17 @@
                     <div class="form-field"><span class="label">Company:</span><span class="form-required" title="This field is required.">*</span>
 						      		<input class="validate" type="text" name="company" required />
 						      	</div>
-                    <div class="form-field"><span class="label">Company URL:</span><span class="form-required" title="This field is required.">*</span>
-						      		<input class="validate" type="text" name="company_url" required />
-						      	</div>
                     <div class="button-wrapper">
- 		  			      	  <button class="waves-effect waves-light btn-large" type="submit">Answer The 15 Questions</button>
+ 		  			      	  <button class="waves-effect waves-light btn-large" type="submit">Use The Calculator</button>
                     </div>
                   </form>
-                </div>
+                </div> <!-- .inner -->
               </div>
-            </div>
-            
-    			</div>
-        </div>
-        
-        <div id="footer">
-          <div id="attribution-line" class="attribution-wrapper wrapper">
-            <div id="attribution-container" class="container">
-              <div class="inner row">
-                <div id="copyright-line" class="col s12 m6 center-on-mobile">
-                  <div class="inner">
-                    <div class="back-to-home"><a href="http://www.tributemedia.com">BACK TO HOME</a></div>
-                    &copy; <?php echo date("Y"); ?> Tribute Media || 208.489.0123 <br /> 136 E. Idaho Ave. Ste. 100, Meridian, ID 83642
-                  </div>
-                </div>
-                <div id="powered-by" class="col s12 m6 right-align center-on-mobile">
-                  <div class="inner">
-                   <ul class="right-align center-on-mobile" id="social-links">
-                     <li><a class="twitter" href="https://twitter.com/tributemedia" target="_blank"><span class="inner">Twitter</span></a></li>
-                     <li><a class="facebook" href="https://www.facebook.com/tributemediaboise" target="_blank"><span class="inner">Facebook</span></a></li>
-                     <li><a class="linkedin" href="https://www.linkedin.com/company/tribute-media" target="_blank"><span class="inner">LinkedIn</span></a></li>
-                     <li><a class="contact" href="https://www.tributemedia.com/contact"><span class="inner"><span class="inner">Contact</span></span></a></li>
-                   </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-    	</div>
-    </div>
+            </div> <!-- .row -->
+    			</div> <!-- .section-inner -->
+        </div> <!-- #section-one -->
+    	</div> <!-- .assessment-inner -->
+    </div> <!-- #assessment-wrapper -->
   
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

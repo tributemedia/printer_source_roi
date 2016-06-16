@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 $step1 = $_POST['front'];
 $step2 = 'no';
@@ -24,7 +24,6 @@ include 'post-vars.php';
   <link rel="Shortcut Icon" href="images/-favicon.ico" />
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -193,51 +192,71 @@ include 'post-vars.php';
             }
           </script>
           <form action="submit.php" method="post" name="calculator">
-            <div class="row">
-              <div class="col s6">Delivery Average Value</div>
-              <div class="col s6 input-field">
-                <span class="prefix">$</span>
-                <input type="number" name="del_avg_val" id="deliveryAvgVal" class="input" onchange="reCalc();" value="250" />
-              </div>
-              <div class="col s6">Number of Drivers</div>
-              <div class="col s6 input-field">
-                <input type="number" name="num_drivers" id="numberOfDrivers" class="input" onchange="reCalc();" value="50" />
-              </div>
-              <div class="col s6">Average Deliveries a Day Per Driver</div>
-              <div class="col s6 input-field">
-                <input type="number" name="del_per_day" id="avgDeliveriesPerDay" class="input" onchange="reCalc();" value="5" />
-              </div>
-              <div class="col s6">Yearly Administration Salary</div>
-              <div class="col s6 input-field">
-                <span class="prefix">$</span>
-                <input type="number" name="annual_admin_salary" id="yearlyAdminSalary" class="input" onchange="reCalc();" value="45000" />
-              </div>
-              <div class="col s6">Business Size</div>
-              <div class="col s6 input-field">
-                <input type="text" name="calc_bus_size" id="calcBusinessSize" class="calculated" />
-              </div>
-            </div>
-            <h4>Costs of Printing &amp; Scanning</h4>
-            <div class="row">
-              <div class="col s8" style="text-align:right;">Cost</div>
-              <div class="col s4" style="text-align:right;">Savings Daily</div>
-              <div class="col s4">Printing (per delivery)</div>
-              <div class="col s4 input-field">
-                <span class="prefix">$</span>
-                <input type="number" name="printing_service" id="printingService" class="input" onchange="reCalc();" value=".5" />
-              </div>
-              <div class="col s4 input-field">
-                <input name="calc_printing_savings" type="text" id="calcReducedPrintingService" class="calculated" />
-              </div>
-              <div class="col s4">Scanning (monthly)</div>
-              <div class="col s4 input-field">
-                <span class="prefix">$</span>
-                <input type="number" name="scan_service" id="scanService" class="input" onchange="reCalc();" value="1500" />
-              </div>
-              <div class="col s4 input-field">
-                <input name="calc_scan_savings" type="text" id="calcReducedScanService" class="calculated" />
-              </div>
-            </div>
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tbody>
+                <tr>
+                  <td>Delivery Average Value</td>
+                  <td style="text-align:right;">$
+                    
+                    <input type="number" name="del_avg_val" id="deliveryAvgVal" class="input" onchange="reCalc();" value="250" />
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <td>Number of Drivers</td>
+                  <td style="text-align:right;">
+                    <input type="number" name="num_drivers" id="numberOfDrivers" class="input" onchange="reCalc();" value="50" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Average Deliveries a Day Per Driver</td>
+                  <td style="text-align:right;">
+                    <input type="number" name="del_per_day" id="avgDeliveriesPerDay" class="input" onchange="reCalc();" value="5" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Yearly Administration Salary</td>
+                  <td style="text-align:right;">$
+                    <input type="number" name="annual_admin_salary" id="yearlyAdminSalary" class="input" onchange="reCalc();" value="45000" />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-weight:bold;">Business Size</td>
+                  <td style="text-align:right;">
+                    <input type="text" name="calc_bus_size" id="calcBusinessSize" class="calculated" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Costs of Printing &amp; Scanning              </h4>
+            <table width="100%" border="0" cellpadding="5" cellspacing="5">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td style="text-align:right;">Cost</td>
+                  <td style="text-align:right;">Savings Daily</td>
+                </tr>
+                <tr>
+                  <td>Printing (per delivery)</td>
+                  <td style="text-align:right;">$
+                    <input type="number" name="printing_service" id="printingService" class="input" onchange="reCalc();" value=".5" />
+                  </td>
+                  <td style="text-align:right;">
+                    <input name="calc_printing_savings" type="text" id="calcReducedPrintingService" class="calculated" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Scanning (monthly)</td>
+                  <td style="text-align:right;">$
+                    <input type="number" name="scan_service" id="scanService" class="input" onchange="reCalc();" value="1500" />
+                  </td>
+                  <td style="text-align:right;">
+                    <input name="calc_scan_savings" type="text" id="calcReducedScanService" class="calculated" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p>&nbsp;</p>
             <h4>Monthly Cost of Running a Scan Center</h4>
             <table width="100%" border="0" cellspacing="5" cellpadding="5">
               <tbody>
@@ -379,7 +398,8 @@ include 'post-vars.php';
                 </tr>
               </tbody>
             </table>
-            
+            <input type="submit" value="Next">
+          </form>
                     
       <h4 style="width:100%;">your estimated savings</h4>
       <p>Based on the information you've provided about your business and processes, we've estimated the following savings.</p>
@@ -400,8 +420,7 @@ include 'post-vars.php';
           Monthly Savings: <span id="calcLeaseMonthlySavings" style="font-size:18px;"></span>
         </div>
       </div>
-            <input type="submit" value="Next">
-          </form>
+
     </div> <!-- #content -->
   </div> <!-- #wrapper -->
 
