@@ -4,6 +4,14 @@
     text-align:right;
 }
 
+.input.suffix {
+  float: left;
+}
+
+.input-field span.suffix {
+  position: absolute;
+}
+
 .calculated
 {
     width:100px;

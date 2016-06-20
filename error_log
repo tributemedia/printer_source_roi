@@ -1,0 +1,8 @@
+[16-Jun-2016 12:55:57 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/printersource/public_html/printer_source_roi/ROI-Calculator.php:1) in /home/printersource/public_html/printer_source_roi/ROI-Calculator.php on line 11
+[20-Jun-2016 17:07:44 America/Chicago] PHP Warning:  Illegal string offset 'pur_day_savings' in /home/printersource/public_html/printer_source_roi/results.php on line 32
+[20-Jun-2016 17:07:44 America/Chicago] PHP Warning:  Illegal string offset 'pur_mon_savings' in /home/printersource/public_html/printer_source_roi/results.php on line 33
+[20-Jun-2016 17:07:44 America/Chicago] PHP Warning:  Illegal string offset 'pur_yrly_savings' in /home/printersource/public_html/printer_source_roi/results.php on line 34
+[20-Jun-2016 17:07:44 America/Chicago] PHP Warning:  Illegal string offset 'full_roi' in /home/printersource/public_html/printer_source_roi/results.php on line 35
+[20-Jun-2016 17:07:44 America/Chicago] PHP Warning:  Illegal string offset 'lease_mon_cost' in /home/printersource/public_html/printer_source_roi/results.php on line 41
+[20-Jun-2016 17:07:44 America/Chicago] PHP Warning:  Illegal string offset 'lease_mon_savings' in /home/printersource/public_html/printer_source_roi/results.php on line 42
+[20-Jun-2016 17:13:39 America/Chicago] PHP Parse error:  syntax error, unexpected '.', expecting variable (T_VARIABLE) or '$' in /home/printersource/public_html/printer_source_roi/results.php on line 4

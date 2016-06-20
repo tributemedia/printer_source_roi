@@ -137,6 +137,12 @@ include 'post-vars.php';
               var calcDailySavings = document.getElementById("calcDailySavings");
               var calcMonthlySavings = document.getElementById("calcMonthlySavings");
               var calcYearlySavings = document.getElementById("calcYearlySavings");
+              var leaseMonCost = document.getElementById("leaseMonCost");
+              var leaseMonSavings = document.getElementById("leaseMonSavings");
+              var fullRoi = document.getElementById("fullRoi");
+              var purchaseDaySavings = document.getElementById("purchaseDaySavings");
+              var purchaseMonSavings = document.getElementById("purchaseMonSavings");
+              var purchaseYrSavings = document.getElementById("purchaseYrSavings");
 
               calcBusinessSize.value = formatCurrency(deliveryAvgVal.value * numberOfDrivers.value * avgDeliveriesPerDay.value * 20 * 12);
               nHourlyRate = yearlyAdminSalary.value / nWorkingHours;
@@ -174,6 +180,12 @@ include 'post-vars.php';
               nLeaseISPcost = internetService.value * numberOfDrivers.value;
               calcLeaseMonthlySavings.innerHTML = formatCurrency(nMonthlySaving - nLeaseMonthlyCost - nLeaseISPcost);
               calcROIinMonths.innerHTML = (nTotalCost / (nMonthlySaving * 12) * 365 / 30).toFixed(0);
+              leaseMonSavings.value = formatCurrency(nMonthlySaving - nLeaseMonthlyCost - nLeaseISPcost);
+              leaseMonCost.value = formatCurrency(nLeaseMonthlyCost);
+              fullRoi.value = (nTotalCost / (nMonthlySaving * 12) * 365 / 30).toFixed(0);
+              purchaseDaySavings.value = formatCurrency(nTotalSaving);
+              purchaseMonSavings.value = formatCurrency(nMonthlySaving);
+              purchaseYrSavings.value = formatCurrency(nMonthlySaving * 12);
             }
 
             function formatCurrency(number) {
@@ -192,26 +204,51 @@ include 'post-vars.php';
               return formatCurrency(number);
             }
           </script>
-          <form action="submit.php" method="post" name="calculator">
+          <form action="results.php" method="post" name="calculator">
+            <div class="form-field">
+              <input type="hidden" name="second" value="yes" />
+            </div>
+            <div class="form-field">
+							<input class="first-name" type="hidden" name="first_name" value=<?php echo '"'
+							 . $first_name . '"'; ?>>
+						</div>
+            <div class="form-field">
+							<input class="last-name" type="hidden" name="last_name" value=<?php echo '"'
+							 . $last_name . '"'; ?>>
+						</div>
+						<div class="form-field">
+							<input class="email" type="hidden" name="email" value=<?php echo '"' . $email . '"'; ?>>
+						</div>
+            <div class="form-field">
+							<input class="company" type="hidden" name="company" value=<?php echo '"' . $company . '"'; ?>>
+						</div>
             <div class="row">
               <div class="col s6">Delivery Average Value</div>
               <div class="col s6 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="del_avg_val" id="deliveryAvgVal" class="input" onchange="reCalc();" value="250" />
               </div>
+            </div>
+            <div class="row">
               <div class="col s6">Number of Drivers</div>
               <div class="col s6 input-field">
                 <input type="number" name="num_drivers" id="numberOfDrivers" class="input" onchange="reCalc();" value="50" />
               </div>
+            </div>
+            <div class="row">
               <div class="col s6">Average Deliveries a Day Per Driver</div>
               <div class="col s6 input-field">
                 <input type="number" name="del_per_day" id="avgDeliveriesPerDay" class="input" onchange="reCalc();" value="5" />
               </div>
+            </div>
+            <div class="row">
               <div class="col s6">Yearly Administration Salary</div>
               <div class="col s6 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="annual_admin_salary" id="yearlyAdminSalary" class="input" onchange="reCalc();" value="45000" />
               </div>
+            </div>
+            <div class="row">
               <div class="col s6">Business Size</div>
               <div class="col s6 input-field">
                 <input type="text" name="calc_bus_size" id="calcBusinessSize" class="calculated" />
@@ -221,6 +258,8 @@ include 'post-vars.php';
             <div class="row">
               <div class="col s8" style="text-align:right;">Cost</div>
               <div class="col s4" style="text-align:right;">Savings Daily</div>
+            </div>
+            <div class="row">
               <div class="col s4">Printing (per delivery)</div>
               <div class="col s4 input-field">
                 <span class="prefix">$</span>
@@ -229,6 +268,8 @@ include 'post-vars.php';
               <div class="col s4 input-field">
                 <input name="calc_printing_savings" type="text" id="calcReducedPrintingService" class="calculated" />
               </div>
+            </div>
+            <div class="row">
               <div class="col s4">Scanning (monthly)</div>
               <div class="col s4 input-field">
                 <span class="prefix">$</span>
@@ -239,168 +280,175 @@ include 'post-vars.php';
               </div>
             </div>
             <h4>Monthly Cost of Running a Scan Center</h4>
-            <table width="100%" border="0" cellspacing="5" cellpadding="5">
-              <tbody>
-                <tr>
-                  <td width="41%"></td>
-                  <td width="33%" style="text-align:right;">Minutes / Percentage</td>
-                  <td width="26%" style="text-align:right;">Savings Daily</td>
-                </tr>
-                <tr>
-                  <td>Time to key Delivery Note</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="key_del_note" id="keyDeliveryNote" class="input" onchange="reCalc();" value="3" /> Mins.
-                    </div>
-                  </td>
-                  <td style="text-align:right;"><input name="calc_key_del_note_savings" type="text" id="calcReducedKeyDeliveryNote" class="calculated" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>% of Delivery Notes Misplaced</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="misplaced_del_notes" id="misplacedDeliveryNotes" class="input" onchange="reCalc();" value="5" /> %
-                    </div>
-                  </td>
-                  <td style="text-align:right;"></td>
-                </tr>
-                <tr>
-                  <td>Time to Manage Misplaced Note</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="manage_misplaced_del_notes" id="manageMisplacedDelivery" class="input" onchange="reCalc();" value="30" /> Mins.
-                    </div>
-                  </td>
-                  <td style="text-align:right;">
-                    <input name="calc_man_misplaced_del_note_savings" type="text" id="calcReducedManageMisplacedDelivery" class="calculated" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>% of Dirty Deliveries</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="dirty_vs_clean" id="dirtyVsClean" class="input" onchange="reCalc();" value="10" /> %
-                    </div>
-                  </td>
-                  <td style="text-align:right;"></td>
-                </tr>
-                <tr>
-                  <td>Time to Manage Dirty Delivery</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="man_dirty_del" id="manageDirtyDelivery" class="input" onchange="reCalc();" value="30" /> Mins.
-                    </div>
-                  </td>
-                  <td style="text-align:right;">
-                    <input name="calc_man_dirty_del_savings" type="text" id="calcReducedManageDirtyDelivery" class="calculated" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Time to Match POD &amp; Invoice</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="match_pod_invoice" id="matchPODInvoiceManually" class="input" onchange="reCalc();" value="1" /> Mins.
-                    </div>
-                  </td>
-                  <td style="text-align:right;">
-                    <input name="calc_match_pod_invoice_savings" type="text" id="calcReducedMatchPODInvoiceManually" class="calculated" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="row">
+              <div class="col s8" style="text-align:right;">Minutes / Percentage</div>
+              <div class="col s4" style="text-align:right;">Savings Daily</div>
+            </div>
+            <div class="row">
+              <div class="col s4">Time to key Delivery Note</div>
+              <div class="col s4 input-field">
+                <input type="number" name="key_del_note" id="keyDeliveryNote" class="input suffix" onchange="reCalc();" value="3" />
+                <span class="suffix">Mins.</span>
+              </div>
+              <div class="col s4 input-field">
+                <input name="calc_key_del_note_savings" type="text" id="calcReducedKeyDeliveryNote" class="calculated" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">% of Delivery Notes Misplaced</div>
+              <div class="col s4 input-field">
+                <input type="number" name="misplaced_del_notes" id="misplacedDeliveryNotes" class="input suffix" onchange="reCalc();" value="5" />
+                <span class="suffix">%</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">Time to Manage Misplaced Note</div>
+              <div class="col s4 input-field">
+                <input type="number" name="manage_misplaced_del_notes" id="manageMisplacedDelivery" class="input suffix" onchange="reCalc();" value="30" />
+                <span class="suffix">Mins.</span>
+              </div>
+              <div class="col s4 input-field">
+                <input name="calc_man_misplaced_del_note_savings" type="text" id="calcReducedManageMisplacedDelivery" class="calculated" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">% of Dirty Deliveries</div>
+              <div class="col s4 input-field">
+                <input type="number" name="dirty_vs_clean" id="dirtyVsClean" class="input suffix" onchange="reCalc();" value="10" />
+                <span class="suffix">%</span>
+              </div>
+              <div class="col s4"></div>
+            </div>
+            <div class="row">
+              <div class="col s4">Time to Manage Dirty Delivery</div>
+              <div class="col s4 input-field">
+                <input type="number" name="man_dirty_del" id="manageDirtyDelivery" class="input suffix" onchange="reCalc();" value="30" />
+                <span class="suffix">Mins.</span>
+              </div>
+              <div class="col s4 input-field">
+                <input name="calc_man_dirty_del_savings" type="text" id="calcReducedManageDirtyDelivery" class="calculated" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">Time to Match POD &amp; Invoice</div>
+              <div class="col s4 input-field">
+                <input type="number" name="match_pod_invoice" id="matchPODInvoiceManually" class="input suffix" onchange="reCalc();" value="1" />
+                <span class="suffix">Mins.</span>
+              </div>
+              <div class="col s4 input-field">
+                <input name="calc_match_pod_invoice_savings" type="text" id="calcReducedMatchPODInvoiceManually" class="calculated" />
+              </div>
+            </div>
             <h4>Financial Costs</h4>
-            <table width="100%" border="0" cellpadding="5" cellspacing="5">
-              <tbody>
-                <tr>
-                  <td width="41%"></td>
-                  <td width="32%" style="text-align:right;">Days / Percentage</td>
-                  <td width="27%" style="text-align:right;">Savings Daily</td>
-                </tr>
-                <tr>
-                  <td>Reduction in DSO Saved </td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="red_dso_saved" id="reductionDSOSaved" class="input" onchange="reCalc();" value="5" /> Days
-                    </div>
-                  </td>
-                  <td style="text-align:right;">
-                    <input name="calc_red_dso_saved" type="text" id="calcReductionDSOSaved" class="calculated" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>% of POD's Lost Daily</td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="num_pod_lost" id="numberOfPODsLostDaily" class="input" onchange="reCalc();" value="1" /> %
-                    </div>
-                  </td>
-                  <td style="text-align:right;"></td>
-                </tr>
-                <tr>
-                  <td>Non-Payment on Lost POD's </td>
-                  <td style="text-align:right;">
-                    <div align="left">
-                      <input type="number" name="non_pay_lost_pod" id="nonPaymentLostPOD" class="input" onchange="reCalc();" value="5" /> %
-                    </div>
-                  </td>
-                  <td style="text-align:right;">
-                    <input name="calc_non_pay_lost_pod" type="text" id="calcNonPaymentLostPOD" class="calculated" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="row">
+              <div class="col s8" style="text-align:right;">Days / Percentage</div>
+              <div class="col s4" style="text-align:right;">Savings Daily</div>
+            </div>
+            <div class="row">
+              <div class="col s4">Reduction in DSO Saved</div>
+              <div class="col s4 input-field">
+                <input type="number" name="red_dso_saved" id="reductionDSOSaved" class="input suffix" onchange="reCalc();" value="5" />
+                <span class="suffix">Days</span>
+              </div>
+              <div class="col s4 input-field">
+                <input name="calc_red_dso_saved" type="text" id="calcReductionDSOSaved" class="calculated" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">% of POD's Lost Daily</div>
+              <div class="col s4 input-field">
+                <input type="number" name="num_pod_lost" id="numberOfPODsLostDaily" class="input suffix" onchange="reCalc();" value="1" />
+                <span class="suffix">%</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">Non-Payment on Lost POD's </div>
+              <div class="col s4 input-field">
+                <input type="number" name="non_pay_lost_pod" id="nonPaymentLostPOD" class="input suffix" onchange="reCalc();" value="5" />
+                <span class="suffix">%</span>
+              </div>
+              <div class="col s4 input-field">
+                <input name="calc_non_pay_lost_pod" type="text" id="calcNonPaymentLostPOD" class="calculated" />
+              </div>
+            </div>
             <h4>System Costs</h4>
-            <table width="100%" border="0" cellpadding="5" cellspacing="5">
-              <tbody>
-                <tr>
-                  <td>PlanetPress Connect Licenses</td>
-                  <td>&nbsp;</td>
-                  <td style="text-align:right;">
-                    <input type="number" name="pp_connect" id="ppConnect" class="input" onchange="reCalc();" value="2" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Cost of Tablets (each)</td>
-                  <td>
-                    <input type="checkbox" id="chkTablets" onclick="toggleNeeded(this, 'numberOfTablets');" /> not needed</td>
-                  <td style="text-align:right;">$ 
-                    <input type="number" name="num_tablets" id="numberOfTablets" class="input" onchange="reCalc();" value="350" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Internet Service per Tablet (monthly)</td>
-                  <td>
-                    <input type="checkbox" id="chkInternet" onclick="toggleNeeded(this, 'internetService');" /> not needed
-                  </td>
-                  <td style="text-align:right;">$
-                    <input type="number" name="internet_service" id="internetService" class="input" onchange="reCalc();" value="60" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="row">
+              <div class="col s4">PlanetPress Connect Licenses</div>
+              <div class="col s4 offset-s4 input-field">
+                <input type="number" name="pp_connect" id="ppConnect" class="input" onchange="reCalc();" value="2" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">Cost of Tablets (each)</div>
+              <div class="col s4">
+                <p>
+                  <input type="checkbox" id="chkTablets" onclick="toggleNeeded(this, 'numberOfTablets');" />
+                  <label for="chkTablets">not needed</label>
+                </p>
+              </div>
+              <div class="col s4 input-field">
+                <span class="prefix">$</span> 
+                <input type="number" name="num_tablets" id="numberOfTablets" class="input" onchange="reCalc();" value="350" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">Internet Service per Tablet (monthly)</div>
+              <div class="col s4">
+                <p>
+                  <input type="checkbox" id="chkInternet" onclick="toggleNeeded(this, 'internetService');" />
+                  <label for="chkInternet">not needed</label>
+                </p>
+              </div>
+              <div class="col s4 input-field">
+                <span class="prefix">$</span>
+                <input type="number" name="internet_service" id="internetService" class="input" onchange="reCalc();" value="60" />
+              </div>
+            </div>
             
-                    
-      <h4 style="width:100%;">your estimated savings</h4>
-      <p>Based on the information you've provided about your business and processes, we've estimated the following savings.</p>
-      <div style="width:49%; float:left; margin-right:2%;">
-        <h3>Purchase</h3>
-        <div style="height:150px; background: linear-gradient(to top left, #3E4543, #677070); padding:6px; font-size:14px; font-weight:bold; color:white;">
-          Daily Savings: <span id="calcDailySavings" style="font-size:18px;"></span><br />
-          Monthly Savings: <span id="calcMonthlySavings" style="font-size:18px;"></span><br />
-          Yearly Savings: <span id="calcYearlySavings" style="font-size:18px;"></span><br /><br />
-          Full ROI in <span id="calcROIinMonths" style="font-size:18px;"></span> months!<br />
-        </div>
-      </div>
+            <!-- Hidden form fields for collecting estimated savings to post to HubSpot. -->
+            
+            <div class="form-field">
+              <input type="hidden" name="pur_day_savings" id="purchaseDaySavings" />
+            </div>
+            <div class="form-field">
+              <input type="hidden" name="pur_mon_savings" id="purchaseMonSavings" />
+            </div>
+            <div class="form-field">
+              <input type="hidden" name="pur_yrly_savings" id="purchaseYrSavings" />
+            </div>
+            <div class="form-field">
+              <input type="hidden" name="full_roi" id="fullRoi" />
+            </div>
+            <div class="form-field">
+              <input type="hidden" name="lease_mon_cost" id="leaseMonCost" />
+            </div>
+            <div class="form-field">
+              <input type="hidden" name="lease_mon_savings" id="leaseMonSavings" />
+            </div>
+            
+            <div style="display:none;">
+            <h4 style="width:100%;">your estimated savings</h4>
+            <p>Based on the information you've provided about your business and processes, we've estimated the following savings.</p>
+            <div style="width:49%; float:left; margin-right:2%;">
+              <h3>Purchase</h3>
+              <div style="height:150px; background: linear-gradient(to top left, #3E4543, #677070); padding:6px; font-size:14px; font-weight:bold; color:white;">
+                Daily Savings: <span id="calcDailySavings" style="font-size:18px;"></span><br />
+                Monthly Savings: <span id="calcMonthlySavings" style="font-size:18px;"></span><br />
+                Yearly Savings: <span id="calcYearlySavings" style="font-size:18px;"></span><br /><br />
+                Full ROI in <span id="calcROIinMonths" style="font-size:18px;"></span> months!<br />
+              </div>
+            </div>
 
-      <div style="width:49%; float:left;">
-        <h3>Lease</h3>
-        <div style="height:150px; background: linear-gradient(to top left, #3E4543, #677070); padding:6px; font-size:14px; font-weight:bold; color:white;">
-          Monthly Lease Cost: <span id="calcLeaseMonthlyCost" style="font-size:18px;"></span><br />
-          Monthly Savings: <span id="calcLeaseMonthlySavings" style="font-size:18px;"></span>
-        </div>
-      </div>
-            <input type="submit" value="Next">
+            <div style="width:49%; float:left;">
+              <h3>Lease</h3>
+              <div style="height:150px; background: linear-gradient(to top left, #3E4543, #677070); padding:6px; font-size:14px; font-weight:bold; color:white;">
+                Monthly Lease Cost: <span id="calcLeaseMonthlyCost" style="font-size:18px;"></span><br />
+                Monthly Savings: <span id="calcLeaseMonthlySavings" style="font-size:18px;"></span>
+              </div>
+            </div></div>
+            <div class="button-wrapper">
+ 		  			  <button class="waves-effect waves-light btn-large" type="submit">Get Your Results</button>
+            </div>
           </form>
     </div> <!-- #content -->
   </div> <!-- #wrapper -->
