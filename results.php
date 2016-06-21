@@ -1,9 +1,12 @@
 <?php
 $results = $_POST;
-foreach ($results as $key => $result) {
-  echo $key . '=>' . $result . '<br />';
-}
+// foreach ($results as $key => $result) {
+//   echo $key . '=>' . $result . '<br />';
+// }
 
+$personas['persona_1'] = 'Business Owner';
+$personas['persona_2'] = 'IT Manager or Director';
+$personas['persona_3'] = 'CFO';
 $step1 = 'yes';
 $step2 = $_POST['second'];
 $finished = 'no';
@@ -16,7 +19,7 @@ $purchase_mon_savings = $results['pur_mon_savings'];
 $purchase_yrly_savings = $results['pur_yrly_savings'];
 $roi_in_mos = $results['full_roi'];
 $lease_mon_cost = $results['lease_mon_cost'];
-$lease_mon_savings = $results['leas_mon_savings'];
+$lease_mon_savings = $results['lease_mon_savings'];
 
 // if ($step2 != 'yes') {
 //   header('Location: ' . $page_url);
@@ -44,6 +47,7 @@ include 'post-vars.php';
 </head>
 
 <body id="results">
+  
   <div id="wrapper">
     <h4 style="width:100%;">your estimated savings</h4>
     <p>Based on the information you've provided about your business and processes, we've estimated the following savings.</p>
@@ -64,22 +68,52 @@ include 'post-vars.php';
       </div>
     </div>
   </div>
-  <form name="results" action="complete.php" method="post">
-    <div class="form-field">
-			<input class="first-name" type="hidden" name="first_name" value=<?php echo '"'
-			 . $first_name . '"'; ?>>
-		</div>
-    <div class="form-field">
-			<input class="last-name" type="hidden" name="last_name" value=<?php echo '"'
-			 . $last_name . '"'; ?>>
-		</div>
-		<div class="form-field">
-			<input class="email" type="hidden" name="email" value=<?php echo '"' . $email . '"'; ?>>
-		</div>
-    <div class="form-field">
-			<input class="company" type="hidden" name="company" value=<?php echo '"' . $company . '"'; ?>>
-		</div>
-    
-  </form>
+  
+  <div class="row">
+    <div class="col s12">
+      <form name="results" action="complete.php" method="post">
+        <div class="form-field">
+	    		<input class="first-name" type="hidden" name="first_name" value=<?php echo '"'
+	    		 . $first_name . '"'; ?>>
+	    	</div>
+        <div class="form-field">
+	    		<input class="last-name" type="hidden" name="last_name" value=<?php echo '"'
+	    		 . $last_name . '"'; ?>>
+	    	</div>
+	    	<div class="form-field">
+	    		<input class="email" type="hidden" name="email" value=<?php echo '"' . $email . '"'; ?>>
+	    	</div>
+        <div class="form-field">
+	    		<input class="company" type="hidden" name="company" value=<?php echo '"' . $company . '"'; ?>>
+	    	</div>
+	    	<div class="input-field">
+	    	  <select name="persona">
+	    	    <option value="" disabled selected>Choose your option</option>
+	    			<?php 
+	    			foreach ($personas as $key => $persona) {
+	    				echo '<option value="' . $key . '">' . $persona . '</option>';
+	    			}
+	    			?>
+	    	  </select>
+	    	  <label>Which statement fits you best?</label>
+	    	</div>
+        <p>
+	    		<input type="checkbox" id="blog" class="contact" name="blog" />
+	    		<label for="blog">Subscribe to our blog.</label>
+	    	</p>
+        <div class="button-wrapper">
+      	  <button id="submit-button" class="waves-effect waves-light btn-large" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+	<script>
+	  $(document).ready(function() {
+	  	$('select').material_select();
+	  });
+	</script>
 </body>
 <html>  
