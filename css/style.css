@@ -1,7 +1,12 @@
 @charset "UTF-8";
 /* CSS Document */
+
+html {
+  background: #333333;
+}
+
 body {
-	margin: 20px 0 10px 0;
+	margin: 0;
 	padding: 0;
 	background: #fff;
 	text-align: left;
@@ -9,6 +14,7 @@ body {
 	font-family: Arial, sans-serif;
 	font-size: 12px;
 	color: #3C3C37;
+  border-top: 5px solid #890f0f;
 	font-weight: normal;
 	font-style: normal;
 	white-space: normal;
@@ -30,10 +36,27 @@ ul {
 	padding: 0;
 }
 
-
-
-
 /** Style for header starts here */
+
+.site-header {
+  margin-top: 10px;
+  border-bottom: 4px solid #f2f2f2;
+}
+
+.site-header .logo {
+  padding-left: 0;
+}
+
+.site-header .logo img{
+  width: 100%;
+}
+
+.site-header .telephone {
+  text-align: right;
+  color: #890f0f;
+  font-size: 18px;
+  font-weight: 700;
+}
 
 #header {
 	width: 800px;
@@ -74,13 +97,35 @@ ul {
 
 /** Style for wrapper starts here */
 
+
 #wrapper {
-	width: 800px;
-	margin: 0px auto;
-	background: #ffffff;
-	padding: 20px;
+	/* width: 800px; */
+	/* margin: 0px auto; */
+	/* background: #ffffff; */
+	/* padding: 20px; */
 }
-/** Style for menu starts here */
+
+
+#section-one .section-inner {
+  padding: 0 0.75rem;
+}
+
+.section-title h2 {
+  font-size: 2.56rem;
+}
+
+span.suffix,
+span.prefix {
+  display: none;
+}
+
+#left .post form .row {
+  background: #f3f2f2;
+}
+
+.col.input-field {
+  margin-top: 0 !important;
+}
 
 /** Style for menu starts here */
 
@@ -244,11 +289,11 @@ input {
 }
 
 #left {
-	float: left;
-/*  width: 600px;*/
-	padding-left: 20px;
-	margin-bottom: 20px;
-	right: 10px;
+	/* float: left; */
+  /*  width: 600px; */
+	/* padding-left: 20px; */
+	/* margin-bottom: 20px; */
+	/* right: 10px; */
 }
 
 #left ul {
@@ -281,6 +326,22 @@ input {
 
 }
 
+.button-wrapper button {
+  background-color: #921807;
+}
+
+.button-wrapper button:hover {
+  background-color: #be200a;
+}
+
+input:focus:not([type]):not([readonly]), input[type="text"]:focus:not([readonly]), 
+input[type="password"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), 
+input[type="url"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), 
+input[type="date"]:focus:not([readonly]), input[type="datetime-local"]:focus:not([readonly]), 
+input[type="tel"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), 
+input[type="search"]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #921807 !important;
+}
 
 /** Style for footer starts here */
 
@@ -317,3 +378,38 @@ input {
 #footer a {
 	color: #FFFFFF;
 }
+
+.site-footer {
+  background: #333333;
+  padding: 15px 0;
+  margin-top: 30px !important;
+}
+
+.site-footer .copyright {
+  color: #979495;
+}
+
+.site-footer .link {
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.site-footer .link a {
+  color: #ffffff;
+}
+
+#results > .row,
+#results > #wrapper {
+  width: 65%;
+  margin: auto;
+}
+
+.site-header.wrapper.row,
+.site-footer.wrapper.row {
+  width: 100% !important;
+}
+
+#results .select-wrapper input.select-dropdown {
+  width: 98% !important;
+}
+

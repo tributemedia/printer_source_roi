@@ -14,7 +14,12 @@
     <div id="assessment-wrapper">
       <div class="assessment-inner">
         
-        
+        <div class="site-header wrapper row">
+          <div class="container">
+            <div class="logo col s12 m5"><img src="images/logo.png"></div>
+            <div class="telephone col s12 m7">CALL 1-800-788-5101</div>
+          </div>
+        </div>
           
         <div id="section-one" class="section">
           <div class="section-inner container">
@@ -54,6 +59,16 @@
             </div> <!-- .row -->
     			</div> <!-- .section-inner -->
         </div> <!-- #section-one -->
+        
+        <div class="site-footer wrapper row">
+          <div class="container">
+            <div class="information col s12">
+              <div class="copyright col s12 m6">&copy; 2016 Printer Source, Inc.</div>
+              <div class="link col s12 m6"><a href="http://wwww.printersource.com">Back to home</a></div>
+            </div>
+          </div>
+        </div>
+        
     	</div> <!-- .assessment-inner -->
     </div> <!-- #assessment-wrapper -->
   

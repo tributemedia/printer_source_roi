@@ -46,5 +46,5 @@ $ch = @curl_init();
 $response    = @curl_exec($ch); //Log the response from HubSpot as needed.
 $status_code = @curl_getinfo($ch, CURLINFO_HTTP_CODE); //Log the response status code
 @curl_close($ch);
-echo $status_code . " " . $response;
+// echo $status_code . " " . $response;
 ?>

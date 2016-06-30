@@ -6,13 +6,28 @@ $finished = 'no';
 $page_name = 'Contact-Information';
 $page_url = 'http://calculator.printersource.com/printer_source_roi/info.php';
 $percent = 'no score';
+$tooltip1 = 'How many deliveries, on average, do you make per truck per driver daily?';
+$tooltip2 = 'What is the average value of each delivery?';
+$tooltip3 = 'How many delivery trucks do you run, on average, per day?';
+$tooltip4 = 'What is the annual salary for the administratvie staff that supports the proof of delivery process?';
+$tooltip5 = 'What does it cost, on average, to produce the delivery documents? Please include paper, consumables and maintenance.';
+$tooltip6 = 'What are the monthly total costs to operate your scanning center? Please include hardware, maintenance and staff.';
+$tooltip7 = 'How much time does it take an individual to make changes or process a delivery note upon its return?';
+$tooltip8 = 'How much time does it take to find, reprocess and manage lost delivery notes?';
+$tooltip9 = 'As a percent, how many delivery notes are misplaced daily or monthly?';
+$tooltip10 = 'What percentage of your daily deliveries have issues (Dirty) and need attention?';
+$tooltip11 = 'On avergae, how long does it take to manage each issue associated to dirty deliveries?';
+$tooltip12 = 'How much time does it take for someone to match the proof of delivery to the cooresponding invoice?';
+$tooltip13 = 'How many days of DSO can be saved with a real time electronic proof of delivery system?';
+$tooltip14 = 'As a perrcent, how many proof of delivery\'s are lost or misplaced daily or monthly?';
+$tooltip15 = 'When a POD is lost, what is the ratio of customer non-payment on them?';
 
-// if ($step1 != 'yes') {
-//   header('Location: ' . $page_url);
-//   exit;
-// }
+if ($step1 != 'yes') {
+  header('Location: ' . $page_url);
+  exit;
+}
 include 'post-vars.php';
-//include 'hs-submit.php';
+include 'hs-submit.php';
 
 ?>
 
@@ -32,6 +47,14 @@ include 'post-vars.php';
   <link href="css/Forms.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body id="calculator" onload="reCalc();">
+  
+  <div class="site-header wrapper row">
+    <div class="container">
+      <div class="logo col s12 m5"><img src="images/logo.png"></div>
+      <div class="telephone col s12 m7">CALL 1-800-788-5101</div>
+    </div>
+  </div>
+  
   <div id="wrapper">
     <!-- <div id="header"><img src="images/OL-Black-Banner800.png" width="800" height="40" alt="" /></div> -->
     <!-- <div id="menu">
@@ -204,7 +227,7 @@ include 'post-vars.php';
               return formatCurrency(number);
             }
           </script>
-          <form action="results.php" method="post" name="calculator">
+          <form action="thankyou.php" method="post" name="calculator">
             <div class="form-field">
               <input type="hidden" name="second" value="yes" />
             </div>
@@ -223,32 +246,32 @@ include 'post-vars.php';
 							<input class="company" type="hidden" name="company" value=<?php echo '"' . $company . '"'; ?>>
 						</div>
             <div class="row">
-              <div class="col s6">Delivery Average Value</div>
+              <div class="col s6 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip2;?>">Value Per Delivery (Average)</div>
               <div class="col s6 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="del_avg_val" id="deliveryAvgVal" class="input" onchange="reCalc();" value="250" />
               </div>
             </div>
             <div class="row">
-              <div class="col s6">Number of Drivers</div>
+              <div class="col s6 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip3;?>">Number of Trucks</div>
               <div class="col s6 input-field">
                 <input type="number" name="num_drivers" id="numberOfDrivers" class="input" onchange="reCalc();" value="50" />
               </div>
             </div>
             <div class="row">
-              <div class="col s6">Average Deliveries a Day Per Driver</div>
+              <div class="col s6 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip1;?>">Deliveries Per Day (Average)</div>
               <div class="col s6 input-field">
                 <input type="number" name="del_per_day" id="avgDeliveriesPerDay" class="input" onchange="reCalc();" value="5" />
               </div>
             </div>
             <div class="row">
-              <div class="col s6">Yearly Administration Salary</div>
+              <div class="col s6 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip4;?>">Administratve Salary (Annual Average)</div>
               <div class="col s6 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="annual_admin_salary" id="yearlyAdminSalary" class="input" onchange="reCalc();" value="45000" />
               </div>
             </div>
-            <div class="row">
+            <div class="row hide">
               <div class="col s6">Business Size</div>
               <div class="col s6 input-field">
                 <input type="text" name="calc_bus_size" id="calcBusinessSize" class="calculated" />
@@ -260,7 +283,7 @@ include 'post-vars.php';
               <div class="col s4" style="text-align:right;">Savings Daily</div>
             </div>
             <div class="row">
-              <div class="col s4">Printing (per delivery)</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip5;?>">Printing Cost (per delivery)</div>
               <div class="col s4 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="printing_service" id="printingService" class="input" onchange="reCalc();" value=".5" />
@@ -270,7 +293,7 @@ include 'post-vars.php';
               </div>
             </div>
             <div class="row">
-              <div class="col s4">Scanning (monthly)</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip6;?>">Scanning Cost (monthly)</div>
               <div class="col s4 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="scan_service" id="scanService" class="input" onchange="reCalc();" value="1500" />
@@ -285,7 +308,7 @@ include 'post-vars.php';
               <div class="col s4" style="text-align:right;">Savings Daily</div>
             </div>
             <div class="row">
-              <div class="col s4">Time to key Delivery Note</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip7;?>">Time to Key Delivery Note</div>
               <div class="col s4 input-field">
                 <input type="number" name="key_del_note" id="keyDeliveryNote" class="input suffix" onchange="reCalc();" value="3" />
                 <span class="suffix">Mins.</span>
@@ -295,14 +318,14 @@ include 'post-vars.php';
               </div>
             </div>
             <div class="row">
-              <div class="col s4">% of Delivery Notes Misplaced</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip9;?>">Delivery Notes Misplaced (%)</div>
               <div class="col s4 input-field">
                 <input type="number" name="misplaced_del_notes" id="misplacedDeliveryNotes" class="input suffix" onchange="reCalc();" value="5" />
                 <span class="suffix">%</span>
               </div>
             </div>
             <div class="row">
-              <div class="col s4">Time to Manage Misplaced Note</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip8;?>">Time to Manage Misplaced Delivery Note</div>
               <div class="col s4 input-field">
                 <input type="number" name="manage_misplaced_del_notes" id="manageMisplacedDelivery" class="input suffix" onchange="reCalc();" value="30" />
                 <span class="suffix">Mins.</span>
@@ -312,7 +335,7 @@ include 'post-vars.php';
               </div>
             </div>
             <div class="row">
-              <div class="col s4">% of Dirty Deliveries</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip10;?>">Dirty Deliveries (%)</div>
               <div class="col s4 input-field">
                 <input type="number" name="dirty_vs_clean" id="dirtyVsClean" class="input suffix" onchange="reCalc();" value="10" />
                 <span class="suffix">%</span>
@@ -320,7 +343,7 @@ include 'post-vars.php';
               <div class="col s4"></div>
             </div>
             <div class="row">
-              <div class="col s4">Time to Manage Dirty Delivery</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip11;?>">Dirty Deliveries (Time)</div>
               <div class="col s4 input-field">
                 <input type="number" name="man_dirty_del" id="manageDirtyDelivery" class="input suffix" onchange="reCalc();" value="30" />
                 <span class="suffix">Mins.</span>
@@ -330,7 +353,7 @@ include 'post-vars.php';
               </div>
             </div>
             <div class="row">
-              <div class="col s4">Time to Match POD &amp; Invoice</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip12;?>">Time to Match Proof of Delivery to Invoice</div>
               <div class="col s4 input-field">
                 <input type="number" name="match_pod_invoice" id="matchPODInvoiceManually" class="input suffix" onchange="reCalc();" value="1" />
                 <span class="suffix">Mins.</span>
@@ -345,7 +368,7 @@ include 'post-vars.php';
               <div class="col s4" style="text-align:right;">Savings Daily</div>
             </div>
             <div class="row">
-              <div class="col s4">Reduction in DSO Saved</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip13;?>">Reduction in Days Sales Outstanding (DSO)</div>
               <div class="col s4 input-field">
                 <input type="number" name="red_dso_saved" id="reductionDSOSaved" class="input suffix" onchange="reCalc();" value="5" />
                 <span class="suffix">Days</span>
@@ -355,14 +378,14 @@ include 'post-vars.php';
               </div>
             </div>
             <div class="row">
-              <div class="col s4">% of POD's Lost Daily</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip14;?>">Lost POD's Daily (%)</div>
               <div class="col s4 input-field">
                 <input type="number" name="num_pod_lost" id="numberOfPODsLostDaily" class="input suffix" onchange="reCalc();" value="1" />
                 <span class="suffix">%</span>
               </div>
             </div>
             <div class="row">
-              <div class="col s4">Non-Payment on Lost POD's </div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip15;?>">Non-Payment on Lost POD's (%)</div>
               <div class="col s4 input-field">
                 <input type="number" name="non_pay_lost_pod" id="nonPaymentLostPOD" class="input suffix" onchange="reCalc();" value="5" />
                 <span class="suffix">%</span>
@@ -451,18 +474,19 @@ include 'post-vars.php';
             </div>
           </form>
     </div> <!-- #content -->
-  </div> <!-- #wrapper -->
+  </div>
+</div>
+</div> <!-- #wrapper -->
+  
+  <div class="site-footer wrapper row">
+    <div class="container">
+      <div class="information col s12">
+        <div class="copyright col s12 m6">&copy; 2016 Printer Source, Inc.</div>
+        <div class="link col s12 m6"><a href="http://wwww.printersource.com">Back to home</a></div>
+      </div>
+    </div>
+  </div>
 
-  <!-- <div id="footer">
-    <table width="100%" border="0" cellspacing="5" cellpadding="5">
-      <tbody>
-        <tr>
-          <td width="8%"><img src="images/OL-Icon-50-LR.png" width="50" height="50" alt="" /></td>
-          <td width="92%"> <strong> OBJECTIF LUNE LLC. &copy; USA  2015 </strong> | <a href="http://www.objectiflune.com" target="_blank">www.objectiflune.com</a> | 300 Broadacres Drive 4th Floor | Bloomfield NJ, 07003 | 973.780.0100</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> --> <!-- #footer -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>

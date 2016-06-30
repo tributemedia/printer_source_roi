@@ -48,8 +48,15 @@ include 'post-vars.php';
 
 <body id="results">
   
+  <div class="site-header wrapper row">
+    <div class="container">
+      <div class="logo col s12 m5"><img src="images/logo.png"></div>
+      <div class="telephone col s12 m7">CALL 1-800-788-5101</div>
+    </div>
+  </div>
+  
   <div id="wrapper">
-    <h4 style="width:100%;">your estimated savings</h4>
+    <h4 style="width:100%;">Your estimated savings</h4>
     <p>Based on the information you've provided about your business and processes, we've estimated the following savings.</p>
     <div style="width:49%; float:left; margin-right:2%;">
       <h3>Purchase</h3>
@@ -105,6 +112,15 @@ include 'post-vars.php';
       	  <button id="submit-button" class="waves-effect waves-light btn-large" type="submit">Submit</button>
         </div>
       </form>
+    </div>
+  </div>
+  
+  <div class="site-footer wrapper row">
+    <div class="container">
+      <div class="information col s12">
+        <div class="copyright col s12 m6">&copy; 2016 Printer Source, Inc.</div>
+        <div class="link col s12 m6"><a href="http://wwww.printersource.com">Back to home</a></div>
+      </div>
     </div>
   </div>
   
