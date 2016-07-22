@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Digital Proof of Delivery ROI Calculator</title>
     <meta content="" name="description">
     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -23,12 +23,12 @@
           
         <div id="section-one" class="section">
           <div class="section-inner container">
-            <div class="section-title"><h2>Let's Get Started</h2></div>
+            <div class="section-title"><h2>Going Digital With Your Proof Of Delivery Process</h2></div>
             
             <div class="row">
               <div class="col s12 m6 section-text">
                 <div class="inner">
-                  <p>Some content here.</p> 
+                  <div class="banner-image"><img src="images/ROI-Calculator.jpg" title="Find out how much Capture On The Go can save your company." alt="Printer Source - Capture On The Go ROI"></div>
                 </div>
               </div>
               

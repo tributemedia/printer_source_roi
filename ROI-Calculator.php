@@ -35,7 +35,7 @@ include 'hs-submit.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Objectif Lune - PlanetPress Partners</title>
+  <title>Digital Proof of Delivery ROI Calculator</title>
   <link rel="Shortcut Icon" href="images/-favicon.ico" />
   <meta name="keywords" content="">
   <meta name="description" content="">
@@ -56,34 +56,6 @@ include 'hs-submit.php';
   </div>
   
   <div id="wrapper">
-    <!-- <div id="header"><img src="images/OL-Black-Banner800.png" width="800" height="40" alt="" /></div> -->
-    <!-- <div id="menu">
-      <ul>
-        <li><a href="home.html">HOME</a></li>
-        <li><a href="business.html"> BUSINESS</a></li>
-        <li><a href="#">PRODUCTS</a>
-          <ul>
-            <li><a href="products-connect.html">CONNECT</a></li>
-            <li><a href="products-classic.html">CLASSIC</a></li>
-            <li><a href="products-cbn.html">EDI / CAPTURE</a></li>
-            <li><a href="products-mobile.html">MOBILE</a></li>
-          </ul>
-        </li>
-        <li><a href="#"> MARKETING </a>
-          <ul>
-            <li><a href="marketing-connect.html">CONNECT</a></li>
-            <li><a href="marketing-classic.html">CLASSIC</a></li>
-            <li><a href="marketing-CBN.html">EDI / CAPTURE</a></li>
-            <li><a href="marketing-mobile.html">MOBILE</a></li>
-            <li><a href="marketing-applications.html">APPLICATIONS</a></li>
-          </ul>
-        </li>
-        <li><a href="videos.html">VIDEOS </a></li>
-        <li><a href="presentations.html">PRESENTATIONS </a></li>
-        <li><a href="training.html"> TRAINING </a></li>
-      </ul>
-    </div> --> <!-- #menu -->
-    <!-- <img src="images/OL-Partner-Banner-Header-2015.gif" alt="" width="800" height="241" /> -->
     <div id="content">
       <div id="left">
         <div class="post">
@@ -209,6 +181,8 @@ include 'hs-submit.php';
               purchaseDaySavings.value = formatCurrency(nTotalSaving);
               purchaseMonSavings.value = formatCurrency(nMonthlySaving);
               purchaseYrSavings.value = formatCurrency(nMonthlySaving * 12);
+              calcOlCare.value = formatCurrency(nCare);
+              calcCotgLicense.value = formatCurrency(nCOTGLicense);
             }
 
             function formatCurrency(number) {
@@ -249,7 +223,7 @@ include 'hs-submit.php';
               <div class="col s6 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip2;?>">Value Per Delivery (Average)</div>
               <div class="col s6 input-field">
                 <span class="prefix">$</span>
-                <input type="number" name="del_avg_val" id="deliveryAvgVal" class="input" onchange="reCalc();" value="250" />
+                <input type="number" name="del_avg_val" id="deliveryAvgVal" class="input" onchange="reCalc();" value="375" />
               </div>
             </div>
             <div class="row">
@@ -261,7 +235,7 @@ include 'hs-submit.php';
             <div class="row">
               <div class="col s6 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip1;?>">Deliveries Per Day (Average)</div>
               <div class="col s6 input-field">
-                <input type="number" name="del_per_day" id="avgDeliveriesPerDay" class="input" onchange="reCalc();" value="5" />
+                <input type="number" name="del_per_day" id="avgDeliveriesPerDay" class="input" onchange="reCalc();" value="15" />
               </div>
             </div>
             <div class="row">
@@ -279,14 +253,14 @@ include 'hs-submit.php';
             </div>
             <h4>Costs of Printing &amp; Scanning</h4>
             <div class="row">
-              <div class="col s8" style="text-align:right;">Cost</div>
-              <div class="col s4" style="text-align:right;">Savings Daily</div>
+              <div class="col-header col s8" style="text-align:right;">Cost</div>
+              <div class="col-header col s4" style="text-align:right;">Savings Daily</div>
             </div>
             <div class="row">
-              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip5;?>">Printing Cost (per delivery)</div>
+              <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip5;?>">Printing Cost (per delivery document)</div>
               <div class="col s4 input-field">
                 <span class="prefix">$</span>
-                <input type="number" name="printing_service" id="printingService" class="input" onchange="reCalc();" value=".5" />
+                <input type="number" name="printing_service" id="printingService" class="input" onchange="reCalc();" value=".25" />
               </div>
               <div class="col s4 input-field">
                 <input name="calc_printing_savings" type="text" id="calcReducedPrintingService" class="calculated" />
@@ -304,13 +278,13 @@ include 'hs-submit.php';
             </div>
             <h4>Monthly Cost of Running a Scan Center</h4>
             <div class="row">
-              <div class="col s8" style="text-align:right;">Minutes / Percentage</div>
-              <div class="col s4" style="text-align:right;">Savings Daily</div>
+              <div class="col-header col s8" style="text-align:right;">Minutes / Percentage</div>
+              <div class="col-header col s4" style="text-align:right;">Savings Daily</div>
             </div>
             <div class="row">
               <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip7;?>">Time to Key Delivery Note</div>
               <div class="col s4 input-field">
-                <input type="number" name="key_del_note" id="keyDeliveryNote" class="input suffix" onchange="reCalc();" value="3" />
+                <input type="number" name="key_del_note" id="keyDeliveryNote" class="input suffix" onchange="reCalc();" value="1" />
                 <span class="suffix">Mins.</span>
               </div>
               <div class="col s4 input-field">
@@ -320,14 +294,14 @@ include 'hs-submit.php';
             <div class="row">
               <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip9;?>">Delivery Notes Misplaced (%)</div>
               <div class="col s4 input-field">
-                <input type="number" name="misplaced_del_notes" id="misplacedDeliveryNotes" class="input suffix" onchange="reCalc();" value="5" />
+                <input type="number" name="misplaced_del_notes" id="misplacedDeliveryNotes" class="input suffix" onchange="reCalc();" value="1" />
                 <span class="suffix">%</span>
               </div>
             </div>
             <div class="row">
               <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip8;?>">Time to Manage Misplaced Delivery Note</div>
               <div class="col s4 input-field">
-                <input type="number" name="manage_misplaced_del_notes" id="manageMisplacedDelivery" class="input suffix" onchange="reCalc();" value="30" />
+                <input type="number" name="manage_misplaced_del_notes" id="manageMisplacedDelivery" class="input suffix" onchange="reCalc();" value="15" />
                 <span class="suffix">Mins.</span>
               </div>
               <div class="col s4 input-field">
@@ -345,7 +319,7 @@ include 'hs-submit.php';
             <div class="row">
               <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip11;?>">Dirty Deliveries (Time)</div>
               <div class="col s4 input-field">
-                <input type="number" name="man_dirty_del" id="manageDirtyDelivery" class="input suffix" onchange="reCalc();" value="30" />
+                <input type="number" name="man_dirty_del" id="manageDirtyDelivery" class="input suffix" onchange="reCalc();" value="15" />
                 <span class="suffix">Mins.</span>
               </div>
               <div class="col s4 input-field">
@@ -364,8 +338,8 @@ include 'hs-submit.php';
             </div>
             <h4>Financial Costs</h4>
             <div class="row">
-              <div class="col s8" style="text-align:right;">Days / Percentage</div>
-              <div class="col s4" style="text-align:right;">Savings Daily</div>
+              <div class="col-header col s8" style="text-align:right;">Days / Percentage</div>
+              <div class="col-header col s4" style="text-align:right;">Savings Daily</div>
             </div>
             <div class="row">
               <div class="col s4 tooltipped" data-position="bottom" data-tooltip="<?php print $tooltip13;?>">Reduction in Days Sales Outstanding (DSO)</div>
@@ -406,7 +380,7 @@ include 'hs-submit.php';
               <div class="col s4">
                 <p>
                   <input type="checkbox" id="chkTablets" onclick="toggleNeeded(this, 'numberOfTablets');" />
-                  <label for="chkTablets">not needed</label>
+                  <label for="chkTablets">not needed<br><sapn style="font-size:12px;">(check if you already own tablets)</span></label>
                 </p>
               </div>
               <div class="col s4 input-field">
@@ -425,6 +399,22 @@ include 'hs-submit.php';
               <div class="col s4 input-field">
                 <span class="prefix">$</span>
                 <input type="number" name="internet_service" id="internetService" class="input" onchange="reCalc();" value="60" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="row">
+                <div class="col s4">OL Care</div>
+                <div class="col s4 offset-s4 input-field">
+                  <input name="calc_ol_care" type="text" id="calcOlCare" class="calculated" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row">
+                <div class="col s4">COTG License</div>
+                <div class="col s4 offset-s4 input-field">
+                  <input name="calc_cotg_license" type="text" id="calcCotgLicense" class="calculated" />
+                </div>
               </div>
             </div>
             
